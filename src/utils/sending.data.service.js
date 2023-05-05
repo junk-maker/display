@@ -18,7 +18,7 @@ class SendingDataService {
     };
 
     async getSendingBtc(bot, chatId) {
-        return bot.sendMessage(chatId, await this.Wallet.sending('mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB', 0.0001, bot, chatId));
+        return bot.sendMessage(chatId, await this.Wallet.sending(process.env.RECIEVER, 0.0001, bot, chatId));
     };
 
     dashboard(bot, type, chatId) {

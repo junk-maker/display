@@ -7,21 +7,21 @@ class Wallet {
         let inputCount = 0;
         let outputCount = 2;
         let totalAmountAvailable = 0;
+        const privateKey = process.env.KEY;
         const transaction = new bitcore.Transaction();
         const satoshiToSend = amountToSend * 100000000;
-        const privateKey = 'b120c498d739699d9bf67f0e732569d003b6f3d011cc83c47dcd104620b83a5c';
 
         const {bitcoin: {addresses}} = mempoolJS({
             hostname: 'mempool.space',
             network: 'testnet'
         });
 
-        const address = 'mq4d66y8mnUj3AtXeQzyKZZedFYjhBy6F7';
+        const address = process.env.ADDR;
         const addressTxsUtxo = await addresses.getAddressTxsUtxo({address});
         // console.log(addressTxsUtxo)
 
         for (const value of addressTxsUtxo) {
-            console.log(value)
+            // console.log(value)
             const utxo = {};
             utxo.txid = value.txid
             utxo.vout = value.vout

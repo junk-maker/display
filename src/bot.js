@@ -1,3 +1,4 @@
+require('dotenv').config({path: './config.env'});
 const TelegramApi = require('node-telegram-bot-api');
 const MarkupService = require('./utils/markup.service');
 const SendingDataService = require('./utils/sending.data.service');
@@ -8,7 +9,7 @@ class Bot {
         this.blue = '\x1b[34m%s\x1b[0m';
         this.MarkupService = new MarkupService();
         this.SendingDataService = new SendingDataService();
-        this.bot = new TelegramApi('6090972311:AAFDbiXGlalIugBfcCe_cNRcfEFXdLREqKs', {
+        this.bot = new TelegramApi(process.env.TOKEN, {
             polling: {
                 interval: 300,
                 autoStart: true,
